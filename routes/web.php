@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LevelController;
+use App\Models\User;
 use Database\Seeders\KategoriSeeder;
 use Illuminate\Support\Facades\Route;
 
@@ -41,3 +42,14 @@ Route::get('/sales',[SalesController::class,'index'])->name('sales.index');
 Route::get('/level',[LevelController::class,'index']);
 Route::get('/kategori',[KategoriController::class,'index']);
 Route::get('/user',[UserController::class, 'index']);
+
+//js 4
+Route::get('/user/tambah', [UserController::class, 'tambah']);
+Route::post('/user/tambah_simpan', [UserController::class, 'tambah_simpan']);
+Route::post('/user/ubah/{id}', function ($id) {
+    dd("Rute ditemukan untuk ID: " . $id);
+});
+Route::put('/user/ubah_simpan/{id}', [UserController::class, 'ubah_simpan']); // Diperbaiki
+Route::delete('/user/hapus/{id}', [UserController::class, 'hapus']); // Diperbaiki
+
+
