@@ -15,7 +15,8 @@ class UserModel extends Model
     protected $primaryKey = 'user_id'; //mendefiniskan primary key dari tabel digunakan
 
     protected $fillable =['level_id', 'username', 'nama', 'password'];
-    public function level(): BelongsTo 
+    
+    public function level()
     {
         return $this->belongsTo(LevelModel::class, 'level_id', 'level_id');
     }
