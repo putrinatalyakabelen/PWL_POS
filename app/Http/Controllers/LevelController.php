@@ -136,7 +136,7 @@ class LevelController extends Controller
 
         LevelModel::find($id)->update([
             'level_kode' => $request->level_kode,
-            'level_name' => $request->level_nama
+            'level_name' => $request->level_name
         ]);
 
         return redirect('/level')->with('success', 'Data level berhasil diubah');
