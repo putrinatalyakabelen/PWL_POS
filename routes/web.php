@@ -104,7 +104,11 @@ Route::pattern('id','[0-9]+'); // artinya ketika ada parameter {id}, maka harus 
  
  Route::get('login', [AuthController::class, 'login'])->name('login');
  Route::post('login', [AuthController::class, 'postlogin']);
- Route::get('logout', [AuthController::class, 'logout'])->middleware('auth');
+ //Route::get('logout', [AuthController::class, 'logout'])->middleware('logout');
+ Route::get('/logout', [AuthController::class, 'logout']);
+ 
  Route::middleware(['auth'])->group(function(){ // artinya semua route di dalam group ini harus login dulu
+ 
+    Route::get('/', [WelcomeController::class, 'index']);
  
  });
