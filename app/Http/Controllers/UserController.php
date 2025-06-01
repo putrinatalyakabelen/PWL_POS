@@ -45,7 +45,7 @@ class UserController extends Controller
             // menambahkan kolom index / no urut (default nama kolom: DT_RowIndex)
             ->addIndexColumn()
             ->addColumn('level.level_nama', function ($user) {
-                return optional($user->level)->level_nama ?? '-';
+                return optional($user->level)->level_name ?? '-';
             })
             ->addColumn('aksi', function ($user) { // menambahkan kolom aksi
                 /*$btn = '<a href="' . url('/user/' . $user->user_id) . '" class="btn btn-info btn-sm">Detail</a> ';
@@ -181,7 +181,7 @@ class UserController extends Controller
 
     public function create_ajax()
     {
-        $level = LevelModel::select('level_id', 'level_nama')->get();
+        $level = LevelModel::select('level_id', 'level_name')->get();
 
         return view('user.create_ajax')
             ->with('level', $level);
@@ -219,7 +219,7 @@ class UserController extends Controller
     public function edit_ajax(string $id)
     {
         $user = UserModel::find($id);
-        $level = LevelModel::select('level_id', 'level_nama')->get();
+        $level = LevelModel::select('level_id', 'level_name')->get();
 
         return view('user.edit_ajax', ['user' => $user, 'level' => $level]);
     }
